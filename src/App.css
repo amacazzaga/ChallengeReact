@@ -5,6 +5,17 @@
 }
 .container-item{
  border: solid;
+ background-color: orange;
  height: 400px;
  width: 400px;
+}
+.input-div {
+  padding: 15px;
+}
+.button-search-div{
+  padding: 15px;
+}
+p{
+  font-weight: bold;
+  font-size: larger;
 }

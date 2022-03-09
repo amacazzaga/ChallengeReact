@@ -18,13 +18,17 @@ function App() {
   };
   return (
     <div className="container">
+      <div className="input-div">
       <input></input>
+      </div>
+      <div className="button-search-div">
       <button>search</button>
+      </div>
       {menu.map((menu) => (
         <MenuItem
           title={menu.title}
-          resto={menu.restaurantChain}
           image={menu.image}
+          resto={menu.restaurantChain}
         />
       ))}
     </div>
