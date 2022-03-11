@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+
 import MenuItem from "./MenuItem";
+
 import "./App.css";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
-  const exampleReq =
-    "https://api.spoonacular.com/food/menuItems/search?apiKey=0cdc104e20294b5e9931a1c0eaa2f126&query=burger&number=10";
+  const exampleReq = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=burger&number=10`;
   const [menu, setMenu] = useState([]);
+  const [input, SetInput] = useState("");
+  const [buttonSearch, SetbuttonSearch] = useState();
   useEffect(() => {
     getMenus();
   }, []);
@@ -19,10 +22,15 @@ function App() {
   return (
     <div className="container">
       <div className="input-div">
-      <input></input>
+        <input
+          onChange={(e) => {
+            SetInput(e.target.value);
+            console.log(input)
+          }}
+        ></input>
       </div>
       <div className="button-search-div">
-      <button>search</button>
+        <button></button>// on click toma el estado de la url
       </div>
       {menu.map((menu) => (
         <MenuItem
