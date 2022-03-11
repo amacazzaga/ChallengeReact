@@ -30,7 +30,7 @@ function App() {
         ></input>
       </div>
       <div className="button-search-div">
-        <button></button>// on click toma el estado de la url
+        <button>search</button>// on click toma el estado de la url
       </div>
       {menu.map((menu) => (
         <MenuItem
