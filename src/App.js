@@ -33,8 +33,8 @@ function App() {
       <div className="button-search-div">
         <button
           onClick={() => {
-            const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`
-            getMenus(url)
+            const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
+            getMenus(url);
           }}
         >
           search
@@ -42,6 +42,7 @@ function App() {
       </div>
       {menu.map((menu) => (
         <MenuItem
+          key={menu.title}
           title={menu.title}
           image={menu.image}
           resto={menu.restaurantChain}
