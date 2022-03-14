@@ -27,6 +27,8 @@ function App() {
   };
   return (
     <div className="container">
+      <h1>MENU FROM HOTEL</h1>
+      <div className="container-input-button">
       <div className="input-div">
         <input
           onChange={(e) => {
@@ -44,6 +46,7 @@ function App() {
         >
           search
         </button>
+      </div>
       </div>
       {menu.map((menu) => (
         <MenuItem
