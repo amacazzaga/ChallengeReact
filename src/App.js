@@ -6,15 +6,17 @@ import "./App.css";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
-  const exampleReq = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=burger&number=10`;
+  const numberUrl = "number=10";
+  const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pasta&${numberUrl}`;
   const [menu, setMenu] = useState([]);
   const [input, SetInput] = useState("");
-  const [buttonSearch, SetbuttonSearch] = useState();
+
   useEffect(() => {
-    getMenus();
+    getMenus(baseUrl);
   }, []);
-  const getMenus = async () => {
-    const response = await fetch(exampleReq);
+
+  const getMenus = async (url) => {
+    const response = await fetch(url);
     const data = await response.json();
     console.log(data);
     setMenu(data.menuItems);
@@ -25,12 +27,18 @@ function App() {
         <input
           onChange={(e) => {
             SetInput(e.target.value);
-            console.log(input)
           }}
         ></input>
       </div>
       <div className="button-search-div">
-        <button>search</button>// on click toma el estado de la url
+        <button
+          onClick={() => {
+            const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`
+            getMenus(url)
+          }}
+        >
+          search
+        </button>
       </div>
       {menu.map((menu) => (
         <MenuItem
