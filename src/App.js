@@ -20,6 +20,10 @@ function App() {
     const data = await response.json();
     console.log(data);
     setMenu(data.menuItems);
+    if(data.menuItems.length===0){
+      alert("sorry, not in the menu!")
+    }
+   
   };
   return (
     <div className="container">
@@ -35,6 +39,7 @@ function App() {
           onClick={() => {
             const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
             getMenus(url);
+           
           }}
         >
           search
