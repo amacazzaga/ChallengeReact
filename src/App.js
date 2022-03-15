@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
-  const numberUrl = "number=5";
+  const numberUrl = "number=4";
   const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pasta&${numberUrl}`;
   const [menu, setMenu] = useState([]);
   const [input, SetInput] = useState("");
@@ -47,6 +47,7 @@ function App() {
             </button>
           </div>
         </div>
+        <div className="items-container">
         {menu.length > 0
           ? menu.map((menu) => (
               <MenuItem
@@ -59,6 +60,7 @@ function App() {
           : loading
           ? "loading"
           : "no hay"}
+          </div>
       </div>
       <div className="container-right">derecha</div>
     </div>
