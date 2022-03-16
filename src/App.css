@@ -26,10 +26,9 @@
   display: flex;
   flex-direction: column;
 }
-.items-container{
+.items-container {
   display: flex;
   flex-wrap: wrap;
-  
 }
 
 .item {
@@ -38,10 +37,19 @@
   background-color: orange;
   height: 400px;
   width: 400px;
-  margin :15px
+  margin: 15px;
+}
+input {
+  height: 30px;
 }
 .input-div {
   padding: 15px;
+}
+.button-search {
+  height: 40px;
+  width: 80px;
+  font-size: large;
+  font-weight: bolder;
 }
 .button-search-div {
   padding: 15px;

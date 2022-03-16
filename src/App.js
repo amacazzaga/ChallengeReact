@@ -37,6 +37,7 @@ function App() {
           </div>
           <div className="button-search-div">
             <button
+              className="button-search"
               onClick={() => {
                 const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
                 SetLoading(true);
@@ -48,19 +49,20 @@ function App() {
           </div>
         </div>
         <div className="items-container">
-        {menu.length > 0
-          ? menu.map((menu) => (
-              <MenuItem
-                key={menu.title}
-                title={menu.title}
-                image={menu.image}
-                resto={menu.restaurantChain}
-              />
-            ))
-          : loading
-          ? "loading"
-          : "no hay"}
-          </div>
+          {menu.length > 0
+            ? menu.map((menu) => (
+                <MenuItem
+                  key={menu.title}
+                  id={menu.id}
+                  title={menu.title}
+                  image={menu.image}
+                  resto={menu.restaurantChain}
+                />
+              ))
+            : loading
+            ? "loading"
+            : "no hay"}
+        </div>
       </div>
       <div className="container-right">derecha</div>
     </div>
