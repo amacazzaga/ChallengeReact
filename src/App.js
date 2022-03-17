@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-
+import ButtonChoose from "./ButtonChoose";
 import MenuItem from "./MenuItem";
-
+import ChooseItem from "./ChooseItem";
 
 import "./App.css";
 
@@ -12,6 +12,7 @@ function App() {
   const [menu, setMenu] = useState([]);
   const [input, SetInput] = useState("");
   const [loading, SetLoading] = useState(true);
+  const [dish, Setdish] = useState([]);
 
   useEffect(() => {
     getMenus(baseUrl);
@@ -53,7 +54,7 @@ function App() {
           {menu.length > 0
             ? menu.map((menu) => (
                 <MenuItem
-                  key={menu.title}
+                  key={menu.id}
                   id={menu.id}
                   title={menu.title}
                   image={menu.image}
