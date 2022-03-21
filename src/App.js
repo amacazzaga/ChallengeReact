@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
   const numberUrl = "number=4";
-  const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pasta&${numberUrl}`;
+  const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pizza&${numberUrl}`;
 
   const [menu, setMenu] = useState([]);
   const [input, SetInput] = useState("");
@@ -64,7 +64,7 @@ function App() {
             ? menu.map((menu) => (
                 <MenuItem
                   click={() => {
-                    getDish(menu.id);
+                    getDish(menu.id);//llamo a getdish con otros params
                   }}
                   key={menu.id}
                   id={menu.id}
@@ -81,6 +81,7 @@ function App() {
       <div className="container-right">
         {dishes.map((dish) => (
           <ChooseItem 
+          key = {dish.id}
           title ={dish.title}/>
         ))}
       </div>
