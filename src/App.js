@@ -9,10 +9,11 @@ function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
   const numberUrl = "number=4";
   const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pasta&${numberUrl}`;
+
   const [menu, setMenu] = useState([]);
   const [input, SetInput] = useState("");
   const [loading, SetLoading] = useState(true);
-  const [dish, Setdish] = useState([]);
+  const [dishes, setDishes] = useState([]);
 
   useEffect(() => {
     getMenus(baseUrl);
@@ -24,6 +25,14 @@ function App() {
     console.log(data);
     setMenu(data.menuItems);
     SetLoading(false);
+  };
+
+  const getDish = async (id) => {
+    const url = `https://api.spoonacular.com/food/menuItems/${id}?apiKey=${ApiKey}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    setDishes(dishes.concat(data));
+    console.log(data);
   };
   return (
     <div className="main-container">
@@ -54,6 +63,9 @@ function App() {
           {menu.length > 0
             ? menu.map((menu) => (
                 <MenuItem
+                  click={() => {
+                    getDish(menu.id);
+                  }}
                   key={menu.id}
                   id={menu.id}
                   title={menu.title}
@@ -66,7 +78,12 @@ function App() {
             : "no hay"}
         </div>
       </div>
-      <div className="container-right">derecha</div>
+      <div className="container-right">
+        {dishes.map((dish) => (
+          <ChooseItem 
+          title ={dish.title}/>
+        ))}
+      </div>
     </div>
   );
 }

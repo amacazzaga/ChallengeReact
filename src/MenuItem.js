@@ -1,10 +1,9 @@
-import React from "react";
 import ButtonChoose from "./ButtonChoose";
 
-const MenuItem = ({ title, resto, image, id }) => {
+const MenuItem = ({ title, resto, image, id, click }) => {
   return (
     <div className="item">
-      <ButtonChoose id={id} />
+      <ButtonChoose id={id} click={click} />
       <h1>{title}</h1>
       <img src={image} alt="" />
       <p>{resto}</p>

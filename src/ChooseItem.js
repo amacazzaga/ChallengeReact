@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from "react";
 
-const ChooseItem = () => {
+const ChooseItem = ({ title }) => {
   return (
-    <div>ChooseItem</div>
-  )
-}
+    <h1>
+      <div>{title}</div>
+    </h1>
+  );
+};
 
-export default ChooseItem
+export default ChooseItem;
