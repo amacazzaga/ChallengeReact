@@ -15,7 +15,7 @@
   align-items: center;
   background-color: antiquewhite;
   width: 500px;
-  height: 500px;
+  height: 1500px;
   border: solid;
   margin: 50px;
 }
@@ -57,4 +57,15 @@ input {
 p {
   font-weight: bold;
   font-size: larger;
+}
+ 
+.image-ChooseItem{
+  height: 200px;
+  width:200px;
+}
+.calories-text {
+  font-size: large;
+}
+.score-text {
+  font-size: large;
 }

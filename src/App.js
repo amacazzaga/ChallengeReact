@@ -7,7 +7,7 @@ import "./App.css";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
-  const numberUrl = "number=4";
+  const numberUrl = "number=10";
   const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pizza&${numberUrl}`;
 
   const [menu, setMenu] = useState([]);
@@ -28,6 +28,7 @@ function App() {
   };
 
   const getDish = async (id) => {
+    //tomo como param id, que dp se carga de valor al hacer click en MenuItem
     const url = `https://api.spoonacular.com/food/menuItems/${id}?apiKey=${ApiKey}`;
     const response = await fetch(url);
     const data = await response.json();
@@ -64,10 +65,9 @@ function App() {
             ? menu.map((menu) => (
                 <MenuItem
                   click={() => {
-                    getDish(menu.id);//llamo a getdish con otros params
+                    getDish(menu.id); //llamo a getdish con otros params: aca le doy el id q va a url
                   }}
                   key={menu.id}
-                  id={menu.id}
                   title={menu.title}
                   image={menu.image}
                   resto={menu.restaurantChain}
@@ -79,10 +79,15 @@ function App() {
         </div>
       </div>
       <div className="container-right">
-        {dishes.map((dish) => (
-          <ChooseItem 
-          key = {dish.id}
-          title ={dish.title}/>
+        {dishes.map((dishes) => (
+          <ChooseItem
+          click={()=>{console.log(setDishes)}}
+            key={dishes.id}
+            title={dishes.title}
+            image={dishes.image}
+            calories={dishes.nutrition.calories}
+            score = {dishes.spoonacularScore}
+          />
         ))}
       </div>
     </div>
