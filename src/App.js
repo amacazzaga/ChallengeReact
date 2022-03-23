@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ButtonChoose from "./ButtonChoose";
 import MenuItem from "./MenuItem";
 import ChooseItem from "./ChooseItem";
 
@@ -22,7 +21,6 @@ function App() {
   const getMenus = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
     setMenu(data.menuItems);
     SetLoading(false);
   };
@@ -33,7 +31,6 @@ function App() {
     const response = await fetch(url);
     const data = await response.json();
     setDishes(dishes.concat(data));
-    console.log(data);
   };
   return (
     <div className="main-container">
@@ -66,6 +63,7 @@ function App() {
                 <MenuItem
                   click={() => {
                     getDish(menu.id); //llamo a getdish con otros params: aca le doy el id q va a url
+                    console.log(dishes);
                   }}
                   key={menu.id}
                   title={menu.title}
@@ -81,12 +79,14 @@ function App() {
       <div className="container-right">
         {dishes.map((dishes) => (
           <ChooseItem
-          click={()=>{console.log(setDishes)}}
+            click={() => {
+              dishes.filter((dish) => dish != dish.id);
+            }}
             key={dishes.id}
             title={dishes.title}
             image={dishes.image}
             calories={dishes.nutrition.calories}
-            score = {dishes.spoonacularScore}
+            score={dishes.spoonacularScore}
           />
         ))}
       </div>
