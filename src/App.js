@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
-import ChooseItem from "./ChooseItem";
+import ChoosedItem from "./ChoosedItem";
 
 import "./App.css";
 
@@ -78,9 +78,9 @@ function App() {
       </div>
       <div className="container-right">
         {dishes.map((dishes) => (
-          <ChooseItem
+          <ChoosedItem
             click={() => {
-              dishes.filter((dish) => dish != dish.id);
+              
             }}
             key={dishes.id}
             title={dishes.title}

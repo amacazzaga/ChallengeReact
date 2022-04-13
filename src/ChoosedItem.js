@@ -1,6 +1,6 @@
 import PopItem from "./PopItem";
 
-const ChooseItem = ({ title,image,calories,score ,click}) => {
+const ChoosedItem = ({ title,image,calories,score ,click}) => {
   return (
     <h1>
       <div>{title}</div>
@@ -12,4 +12,4 @@ const ChooseItem = ({ title,image,calories,score ,click}) => {
   );
 };
 
-export default ChooseItem;
+export default ChoosedItem;
