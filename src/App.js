@@ -12,7 +12,7 @@ function App() {
   const [menu, setMenu] = useState([]);
   const [input, SetInput] = useState("");
   const [loading, SetLoading] = useState(true);
-  const [dishes, setDishes] = useState([]);
+  const [choosedDishes, setChoosedDishes] = useState([]);
 
   useEffect(() => {
     getMenus(baseUrl);
@@ -25,12 +25,12 @@ function App() {
     SetLoading(false);
   };
 
-  const getDish = async (id) => {
+  const addChoosedDish = async (id) => {
     //tomo como param id, que dp se carga de valor al hacer click en MenuItem
     const url = `https://api.spoonacular.com/food/menuItems/${id}?apiKey=${ApiKey}`;
     const response = await fetch(url);
     const data = await response.json();
-    setDishes(dishes.concat(data));
+    setChoosedDishes(choosedDishes.concat(data));
   };
   return (
     <div className="main-container">
@@ -59,16 +59,17 @@ function App() {
         </div>
         <div className="items-container">
           {menu.length > 0
-            ? menu.map((menu) => (
+            ? menu.map((m) => (
                 <MenuItem
                   click={() => {
-                    getDish(menu.id); //llamo a getdish con otros params: aca le doy el id q va a url
-                    console.log(dishes);
+                    addChoosedDish(m.id); //llamo a getdish con otros params: aca le doy el id q va a url
+                    //esta cargada en menuItem pero es lo q hace button choose
+                    console.log(choosedDishes);
                   }}
-                  key={menu.id}
-                  title={menu.title}
-                  image={menu.image}
-                  resto={menu.restaurantChain}
+                  key={m.id}
+                  title={m.title}
+                  image={m.image}
+                  resto={m.restaurantChain}
                 />
               ))
             : loading
@@ -77,16 +78,20 @@ function App() {
         </div>
       </div>
       <div className="container-right">
-        {dishes.map((dishes) => (
+        {choosedDishes.map((d) => (
           <ChoosedItem
             click={() => {
-              
+              setChoosedDishes(
+                choosedDishes.filter((dish) => { 
+                return  dish.id != d.id;
+                })
+              );
             }}
-            key={dishes.id}
-            title={dishes.title}
-            image={dishes.image}
-            calories={dishes.nutrition.calories}
-            score={dishes.spoonacularScore}
+            key={d.id}
+            title={d.title}
+            image={d.image}
+            calories={d.nutrition.calories}
+            score={d.spoonacularScore}
           />
         ))}
       </div>
