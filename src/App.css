@@ -1,4 +1,4 @@
-.main-container {
+.container {
   display: flex;
   background-color: aqua;
 }
@@ -8,6 +8,14 @@
   background-color: antiquewhite;
   width: 1000px;
   margin: 50px;
+}
+.modal-login {
+background-color: rgb(255, 115, 0);
+}
+.modal-form {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
 }
 .container-right {
   display: flex;
