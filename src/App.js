@@ -3,6 +3,7 @@ import MenuItem from "./MenuItem";
 import ChoosedItem from "./ChoosedItem";
 
 import "./App.css";
+import ButtonSearch from "./ButtonSearch";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -16,7 +17,7 @@ function App() {
 
   useEffect(() => {
     getMenus(baseUrl);
-  }, []);// lo primero que aparece en la web
+  }, []); // lo primero que aparece en la web
 
   const getMenus = async (url) => {
     const response = await fetch(url);
@@ -45,16 +46,13 @@ function App() {
             ></input>
           </div>
           <div className="button-search-div">
-            <button
-              className="button-search"
+            <ButtonSearch
               onClick={() => {
                 const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
                 SetLoading(true);
                 getMenus(url);
               }}
-            >
-              search
-            </button>
+            />
           </div>
         </div>
         <div className="items-container">
@@ -82,8 +80,8 @@ function App() {
           <ChoosedItem
             click={() => {
               setChoosedDishes(
-                choosedDishes.filter((dish) => { 
-                return  dish.id != d.id;
+                choosedDishes.filter((dish) => {
+                  return dish.id != d.id;
                 })
               );
             }}
