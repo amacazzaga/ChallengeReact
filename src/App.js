@@ -59,7 +59,7 @@ function App() {
               />
             </div>
           </div>
-          <div className="items-container">
+          <div className="container-lg">
             {menu.length > 0
               ? menu.map((m) => (
                   <MenuItem
@@ -81,7 +81,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="container-right">
+      <div className="container-lg">
         <h2>Your Selection:</h2>
         {choosedDishes.map((d) => (
           <ChoosedItem
