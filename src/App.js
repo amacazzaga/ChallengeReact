@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     getMenus(baseUrl);
-  }, []);
+  }, []);// lo primero que aparece en la web
 
   const getMenus = async (url) => {
     const response = await fetch(url);
