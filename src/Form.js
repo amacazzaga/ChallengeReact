@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = () => {
+const Form = ({handleChange}) => {
   return (
     <div>
       <div class="mb-3 row">
@@ -9,10 +9,11 @@ const Form = () => {
         </label>
         <div class="col-sm-10">
           <input
+           onChange={handleChange}
             type="text"
             class="form-control"
-            name="staticEmail"
-            value=""
+            name="email"
+           
           ></input>
         </div>
       </div>
@@ -22,9 +23,11 @@ const Form = () => {
         </label>
         <div class="col-sm-10">
           <input
+          onChange={handleChange}
             type="password"
             class="form-control"
-            name="inputPassword"
+            name="password"
+         
           ></input>
         </div>
         <button>SEND!</button>
