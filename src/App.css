@@ -2,6 +2,12 @@
   display: flex;
   background-color: aqua;
 }
+.container-form {
+  border: solid;
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+}
 .container-left {
   display: flex;
   flex-direction: column;

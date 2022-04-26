@@ -3,8 +3,7 @@ import MenuItem from "./MenuItem";
 import ChoosedItem from "./ChoosedItem";
 import "./App.css";
 import ButtonSearch from "./ButtonSearch";
-import ModalLoggin from "./ModalLoggin";
-
+import Form from "./Form";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -35,11 +34,13 @@ function App() {
     setChoosedDishes(choosedDishes.concat(data));
   };
   return (
-    <main className="container">
-      <div className="modal-login">
-        <ModalLoggin />
-        <div className="container-left">
-          {/*bootstrap here*/}
+    <div>
+      <div className="container-form">
+        <Form/>
+      </div>
+      <div>
+      <main className="container">
+        <div className="modal-login">
           <h1>MENU FROM HOTEL</h1>
           <div className="container-input-button">
             <div className="input-div">
@@ -59,7 +60,7 @@ function App() {
               />
             </div>
           </div>
-          <div className="container-lg">
+          <div className="container-md">
             {menu.length > 0
               ? menu.map((m) => (
                   <MenuItem
@@ -80,32 +81,33 @@ function App() {
               : "no hay"}
           </div>
         </div>
+        <div className="container-lg">
+          <h2>Your Selection:</h2>
+          {choosedDishes.map((d) => (
+            <ChoosedItem
+              click={() => {
+                setChoosedDishes(
+                  choosedDishes.filter((dish) => {
+                    return dish.id != d.id;
+                  })
+                );
+              }}
+              key={d.id}
+              title={d.title}
+              image={d.image}
+              calories={d.nutrition.calories}
+              score={d.spoonacularScore}
+            />
+          ))}
+        </div>
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"
+        ></script>
+      </main>
       </div>
-      <div className="container-lg">
-        <h2>Your Selection:</h2>
-        {choosedDishes.map((d) => (
-          <ChoosedItem
-            click={() => {
-              setChoosedDishes(
-                choosedDishes.filter((dish) => {
-                  return dish.id != d.id;
-                })
-              );
-            }}
-            key={d.id}
-            title={d.title}
-            image={d.image}
-            calories={d.nutrition.calories}
-            score={d.spoonacularScore}
-          />
-        ))}
-      </div>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"
-      ></script>
-    </main>
+    </div>
   );
 }
 
