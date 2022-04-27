@@ -2,10 +2,15 @@ import React from "react";
 import { useState } from "react";
 
 const Form = () => {
-  const [form, setForm] = useState(); //state de form
-  const handleChange = (e) => {
-    setForm(e.target.value);
-    console.log(form)
+  const [email, setEmail] = useState(); 
+  const [pass, setPass]= useState()
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    console.log(email)
+  };
+  const handlePassChange = (e) => {
+    setPass(e.target.value);
+    console.log(pass)
   };
   return (
     <div>
@@ -15,7 +20,7 @@ const Form = () => {
         </label>
         <div class="col-sm-10">
           <input
-            onChange={handleChange}
+            onChange={handleEmailChange}
             type="text"
             class="form-control"
             name="email"
@@ -28,7 +33,7 @@ const Form = () => {
         </label>
         <div class="col-sm-10">
           <input
-            onChange={handleChange}
+            onChange={handlePassChange}
             type="password"
             class="form-control"
             name="password"
