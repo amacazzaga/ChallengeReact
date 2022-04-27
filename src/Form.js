@@ -1,19 +1,30 @@
 import React from "react";
 import ButtonForm from "./ButtonForm";
 import { useState } from "react";
+import axios from "axios";
 
 const Form = () => {
-  const [email, setEmail] = useState(); 
-  const [pass, setPass]= useState()
+  const [email, setEmail] = useState();
+  const [pass, setPass] = useState();
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    console.log(email)
+    console.log(email);
   };
   const handlePassChange = (e) => {
     setPass(e.target.value);
-    console.log(pass)
+    console.log(pass);
   };
-  const clickButtonForm = ()=>{console.log("hello")}
+
+  const clickButtonForm = () => {
+    axios({
+      method: "POST",
+      url: "http://challenge-react.alkemy.org/",
+      data: {
+        body: email,
+        pass,
+      },
+    }).then(res=>{console.log(res)});
+  };
   return (
     <div>
       <div class="mb-3 row">
@@ -41,7 +52,7 @@ const Form = () => {
             name="password"
           ></input>
         </div>
-        <ButtonForm onClick ={clickButtonForm}/>
+        <ButtonForm onClick={clickButtonForm} />
       </div>
     </div>
   );
