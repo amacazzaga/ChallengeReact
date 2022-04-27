@@ -1,4 +1,5 @@
 import React from "react";
+import ButtonForm from "./ButtonForm";
 import { useState } from "react";
 
 const Form = () => {
@@ -12,6 +13,7 @@ const Form = () => {
     setPass(e.target.value);
     console.log(pass)
   };
+  const clickButtonForm = ()=>{console.log("hello")}
   return (
     <div>
       <div class="mb-3 row">
@@ -39,7 +41,7 @@ const Form = () => {
             name="password"
           ></input>
         </div>
-        <button>SEND!</button>
+        <ButtonForm onClick ={clickButtonForm}/>
       </div>
     </div>
   );
