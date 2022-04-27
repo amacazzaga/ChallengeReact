@@ -1,6 +1,12 @@
 import React from "react";
+import { useState } from "react";
 
-const Form = ({handleChange}) => {
+const Form = () => {
+  const [form, setForm] = useState(); //state de form
+  const handleChange = (e) => {
+    setForm(e.target.value);
+    console.log(form)
+  };
   return (
     <div>
       <div class="mb-3 row">
@@ -9,11 +15,10 @@ const Form = ({handleChange}) => {
         </label>
         <div class="col-sm-10">
           <input
-           onChange={handleChange}
+            onChange={handleChange}
             type="text"
             class="form-control"
             name="email"
-           
           ></input>
         </div>
       </div>
@@ -23,11 +28,10 @@ const Form = ({handleChange}) => {
         </label>
         <div class="col-sm-10">
           <input
-          onChange={handleChange}
+            onChange={handleChange}
             type="password"
             class="form-control"
             name="password"
-         
           ></input>
         </div>
         <button>SEND!</button>

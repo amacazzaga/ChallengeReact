@@ -14,7 +14,6 @@ function App() {
   const [input, SetInput] = useState("");
   const [loading, SetLoading] = useState(true);
   const [choosedDishes, setChoosedDishes] = useState([]);
-  const [form, setForm] = useState(); //state de form
 
   useEffect(() => {
     getMenus(baseUrl);
@@ -35,16 +34,10 @@ function App() {
     setChoosedDishes(choosedDishes.concat(data));
   };
 
- const handleChange = (e) => {
-    setForm(e.target.value);
-  };
-
-  const validatePassword = () => {};
-  const sendFormFromButton = () => {};
   return (
     <div>
       <div className="container-form">
-        <Form handleChange={handleChange} />
+        <Form />
       </div>
       <div>
         <main className="container">
