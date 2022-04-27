@@ -16,14 +16,12 @@ const Form = () => {
   };
 
   const clickButtonForm = () => {
-    axios({
-      method: "POST",
-      url: "http://challenge-react.alkemy.org/",
-      data: {
-        body: email,
-        pass,
-      },
-    }).then(res=>{console.log(res)});
+    axios.post(`http://challenge-react.alkemy.org/`,{
+      email : email,
+      password: pass
+    })  .then(function (response) {
+      console.log(response);
+    })
   };
   return (
     <div>
