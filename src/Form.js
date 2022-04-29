@@ -8,20 +8,20 @@ const Form = () => {
   const [pass, setPass] = useState();
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    console.log(email);
   };
   const handlePassChange = (e) => {
     setPass(e.target.value);
-    console.log(pass);
   };
 
   const clickButtonForm = () => {
-    axios.post(`http://challenge-react.alkemy.org/`,{
-      email : email,
-      password: pass
-    })  .then(function (response) {
-      console.log(response);
-    })
+    axios
+      .post(`http://challenge-react.alkemy.org/`, {
+        email: email,
+        password: pass,
+      })
+      .then(function (response) {
+        console.log(response);
+      });
   };
   return (
     <div>
