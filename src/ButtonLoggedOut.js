@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ButtonLoggedOut = () => {
+const ButtonLoggedOut = ({onClick}) => {
   return (
-    <button>Logg Out</button>
+    <button onClick={onClick}>Logg Out</button>
   )
 }
 

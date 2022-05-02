@@ -21,6 +21,7 @@ function App() {
     localStorage.setItem("token", token);
     setLoggedIn(true);
   };
+  
   /*use effect con el item del token
   if() ,logout, render piola
   */
@@ -51,7 +52,10 @@ function App() {
         <main className="container">
           <div className="modal-login">
             <h1>MENU FROM HOTEL</h1>
-            <ButtonLoggedOut/>
+            <ButtonLoggedOut onClick={()=>{
+              localStorage.removeItem("token")
+              setLoggedIn(false)
+            }}/>
             <div className="container-input-button">
               <div className="input-div">
                 <input
