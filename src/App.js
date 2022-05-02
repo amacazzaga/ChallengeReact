@@ -16,23 +16,29 @@ function App() {
   const [loading, SetLoading] = useState(true);
   const [choosedDishes, setChoosedDishes] = useState([]);
   const [isLoggedIn, setLoggedIn] = useState(false);
-
-  const onAuthSuccess = (token) => {
-    localStorage.setItem("token", token);
-    setLoggedIn(true);
-  };
-  
-  /*use effect con el item del token
-  if() ,logout, render piola
-  */
-
+  ///////////////////////////
   const getMenus = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
     setMenu(data.menuItems);
     SetLoading(false);
   };
-
+  //////////////////////////////
+   useEffect(() => {
+    getMenus(baseUrl);
+  }, []); // lo primero que aparece en la web
+  ////////////////////////////////////////
+  const onAuthSuccess = (token) => {
+    localStorage.setItem("token", token);
+    setLoggedIn(true);
+  };
+  ////////////////////////////////////////
+  /*use effect con el item del token
+  if() , render piola
+  */
+////////////////////////////////////
+ 
+/////////////////////////////////////////
   const addChoosedDish = async (id) => {
     //tomo como param id, que dp se carga de valor al hacer click en MenuItem
     const url = `https://api.spoonacular.com/food/menuItems/${id}?apiKey=${ApiKey}`;
@@ -40,11 +46,10 @@ function App() {
     const data = await response.json();
     setChoosedDishes(choosedDishes.concat(data));
   };
-
+////////////////////////////////////////////
   return (
     <div>
       <div className="container-form">
-       
         <Form onAuthSuccess={onAuthSuccess} />
         <div>{isLoggedIn ? "logeado" : "no logeado"}</div>
       </div>
