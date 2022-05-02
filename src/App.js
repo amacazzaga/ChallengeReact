@@ -18,9 +18,16 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   ///////////////////////////
   useEffect(() => {
+   
     getMenus(baseUrl);
   }, []); // lo primero que aparece en la web
   ////////////////////////////////////////
+  useEffect(()=>{
+    if
+    (localStorage.getItem("token"))
+     { setLoggedIn(true)}
+    
+  },[])
   const getMenus = async (url) => {
     //getMenus tiene un endpoint q depende del parametro dado
     const response = await fetch(url);
@@ -35,7 +42,7 @@ function App() {
   };
   ////////////////////////////////////////
   /*use effect con el item del token
-  if() , render piola
+  if() 
   */
   /////////////////////////////////////////
   const addChoosedDish = async (id) => {
@@ -50,7 +57,7 @@ function App() {
     <div>
       <div className="container-form">
         <div>
-          {!isLoggedIn ? (
+          {!isLoggedIn ? (//conditional rendering!
             <Form onAuthSuccess={onAuthSuccess} />
           ) : (
             <main className="container">
