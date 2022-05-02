@@ -4,6 +4,7 @@ import ChoosedItem from "./ChoosedItem";
 import "./App.css";
 import ButtonSearch from "./ButtonSearch";
 import Form from "./Form";
+import ButtonLoggedOut from "./ButtonLoggedOut";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -14,10 +15,15 @@ function App() {
   const [input, SetInput] = useState("");
   const [loading, SetLoading] = useState(true);
   const [choosedDishes, setChoosedDishes] = useState([]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    getMenus(baseUrl);
-  }, []); // lo primero que aparece en la web
+  const onAuthSuccess = (token) => {
+    localStorage.setItem("token", token);
+    setLoggedIn(true);
+  };
+  /*use effect con el item del token
+  if() ,logout, render piola
+  */
 
   const getMenus = async (url) => {
     const response = await fetch(url);
@@ -37,12 +43,15 @@ function App() {
   return (
     <div>
       <div className="container-form">
-        <Form />
+       
+        <Form onAuthSuccess={onAuthSuccess} />
+        <div>{isLoggedIn ? "logeado" : "no logeado"}</div>
       </div>
       <div>
         <main className="container">
           <div className="modal-login">
             <h1>MENU FROM HOTEL</h1>
+            <ButtonLoggedOut/>
             <div className="container-input-button">
               <div className="input-div">
                 <input

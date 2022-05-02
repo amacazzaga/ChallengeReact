@@ -3,15 +3,10 @@ import ButtonForm from "./ButtonForm";
 import { useState } from "react";
 import axios from "axios";
 
-const Form = () => {
+const Form = ({onAuthSuccess}) => {
   const [email, setEmail] = useState();
   const [pass, setPass] = useState();
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-  const handlePassChange = (e) => {
-    setPass(e.target.value);
-  };
+  const [error, setError] = useState();
 
   const clickButtonForm = () => {
     axios
@@ -19,8 +14,26 @@ const Form = () => {
         email: email,
         password: pass,
       })
+
       .then(function (response) {
-        console.log(response);
+        if (response.status == 200) {
+          console.log(response);
+          onAuthSuccess(response.data.token)
+          setError("");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+        switch (e.response.status) {
+          case 401:
+            setError("credenciales incorrectas");
+
+            break;
+
+          default:
+            console.log("error default");
+            break;
+        }
       });
   };
   return (
@@ -31,7 +44,7 @@ const Form = () => {
         </label>
         <div class="col-sm-10">
           <input
-            onChange={handleEmailChange}
+            onChange={(e) => setEmail(e.target.value)}
             type="text"
             class="form-control"
             name="email"
@@ -44,12 +57,13 @@ const Form = () => {
         </label>
         <div class="col-sm-10">
           <input
-            onChange={handlePassChange}
+            onChange={(e) => setPass(e.target.value)}
             type="password"
             class="form-control"
             name="password"
           ></input>
         </div>
+        <div>{error}</div>
         <ButtonForm onClick={clickButtonForm} />
       </div>
     </div>
