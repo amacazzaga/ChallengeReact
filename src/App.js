@@ -62,12 +62,7 @@ function App() {
             <main className="container">
               <div className="modal-login">
                 <h1>MENU FROM HOTEL</h1>
-                <ButtonLoggedOut
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    setLoggedIn(false);
-                  }}
-                />
+               
                 <div className="container-input-button">
                   <div className="input-div">
                     <input
@@ -84,6 +79,12 @@ function App() {
                         getMenus(url);
                       }}
                     />
+                     <ButtonLoggedOut
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    setLoggedIn(false);
+                  }}
+                />
                   </div>
                 </div>
                 <div className="container-md">
@@ -106,7 +107,9 @@ function App() {
                     ? "loading"
                     : "no hay"}
                 </div>
+               
               </div>
+              
               <div className="container-lg">
                 <h2>Your Selection:</h2>
                 {choosedDishes.map((d) => (

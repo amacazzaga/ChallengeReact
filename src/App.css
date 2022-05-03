@@ -65,7 +65,12 @@ input {
   font-size: large;
   font-weight: bolder;
 }
+.button-logg-out {
+  font-weight: bolder;
+}
 .button-search-div {
+  display: flex;
+  justify-content: space-between;
   padding: 15px;
 }
 p {
