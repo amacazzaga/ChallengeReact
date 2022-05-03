@@ -93,8 +93,6 @@ p {
 
 .mb-3 {
   border: solid;
-  height: 250px;
-  width: 700px;
   background-color: yellow;
   display: flex;
   align-items: center;
