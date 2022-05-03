@@ -26,7 +26,7 @@ const Form = ({ onAuthSuccess }) => {
         console.log(e);
         switch (e.response.status) {
           case 401:
-            setError("credenciales incorrectas");
+            setError(<p>Credenciales incorrectas!!!</p>);
 
             break;
 
@@ -37,7 +37,7 @@ const Form = ({ onAuthSuccess }) => {
       });
   };
   return (
-    <div>
+    <div className="container-form-page">
       <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-2 col-form-label">
          <p>Email</p> 
@@ -65,7 +65,7 @@ const Form = ({ onAuthSuccess }) => {
         </div>
         <div>{error}</div>
       </div>
-        <ButtonForm onClick={clickButtonForm} />
+      <ButtonForm onClick={clickButtonForm} />
     </div>
   );
 };

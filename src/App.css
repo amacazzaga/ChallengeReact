@@ -16,7 +16,7 @@
   margin: 50px;
 }
 .modal-login {
-background-color: rgb(255, 115, 0);
+  background-color: rgb(255, 115, 0);
 }
 .modal-form {
   justify-content: center;
@@ -72,10 +72,10 @@ p {
   font-weight: bold;
   font-size: larger;
 }
- 
-.image-ChooseItem{
+
+.image-ChooseItem {
   height: 200px;
-  width:200px;
+  width: 200px;
 }
 .calories-text {
   font-size: large;
@@ -84,16 +84,24 @@ p {
   font-size: large;
 }
 /*FORM HERE :**/
-.container-form{
+
+.container-form {
+  padding: 25px;
+  margin: 25px;
   background-color: rgb(255, 111, 0);
 }
 
-.mb-3{
+.mb-3 {
   border: solid;
   height: 250px;
   width: 700px;
- background-color: yellow;
+  background-color: yellow;
   display: flex;
   align-items: center;
 }
-
+.button-form {
+  font-size: larger;
+  font-weight: bolder;
+  border: solid;
+  width: 250px;
+}
