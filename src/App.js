@@ -54,7 +54,7 @@ function App() {
   ////////////////////////////////////////////
   return (
     <div>
-      <div className="container-form">
+      <div className="container-xl">
         <div>
           {!isLoggedIn ? ( //conditional rendering!
             <Form onAuthSuccess={onAuthSuccess} />
