@@ -105,7 +105,7 @@ function App() {
                       ))
                     : loading
                     ? "loading"
-                    : "no hay"}
+                    : <p>"no menus for : {input}, we sorry"</p>}
                 </div>
                
               </div>
