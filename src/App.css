@@ -91,6 +91,8 @@ p {
   font-size: large;
 }
 .container-xs {
+  padding: 5px;
+  margin: 25px;
   background-color: beige;
   border: solid;
 }
