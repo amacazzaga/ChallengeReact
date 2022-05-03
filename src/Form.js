@@ -26,7 +26,7 @@ const Form = ({ onAuthSuccess }) => {
         console.log(e);
         switch (e.response.status) {
           case 401:
-            setError(<p>Credenciales incorrectas!!!</p>);
+            setError(<p>No such user!</p>);
 
             break;
 
@@ -38,9 +38,16 @@ const Form = ({ onAuthSuccess }) => {
   };
   return (
     <div class="container-md">
+      <div>
+        {" "}
+        <h2>
+          <p>Welcome to the Hotel!</p>
+        </h2>
+      </div>
+      <p>Please, Logg in :</p>
       <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-2 col-form-label">
-         <p>Email</p> 
+          <p>Email</p>
         </label>
         <div class="col-sm-10">
           <input
@@ -53,7 +60,7 @@ const Form = ({ onAuthSuccess }) => {
       </div>
       <div class="mb-3 row">
         <label for="inputPassword" class="col-sm-2 col-form-label">
-         <p>Pass</p> 
+          <p>Pass</p>
         </label>
         <div class="col-sm-10">
           <input
@@ -63,8 +70,8 @@ const Form = ({ onAuthSuccess }) => {
             name="password"
           ></input>
         </div>
-        <div>{error}</div>
       </div>
+      <div>{error}</div>
       <ButtonForm onClick={clickButtonForm} />
     </div>
   );
