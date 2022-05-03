@@ -1,4 +1,5 @@
 .container {
+  margin: 15px;
   display: flex;
   background-color: aqua;
 }
@@ -16,6 +17,7 @@
   margin: 50px;
 }
 .modal-login {
+  width: 1200px;
   background-color: rgb(255, 115, 0);
 }
 .modal-form {
@@ -87,6 +89,13 @@ p {
 }
 .score-text {
   font-size: large;
+}
+.container-xs {
+  background-color: beige;
+  border: solid;
+}
+.container-lg{
+  padding: 25px;
 }
 /*FORM HERE :**/
 .container-form {
