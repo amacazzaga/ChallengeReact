@@ -40,7 +40,7 @@ const Form = ({ onAuthSuccess }) => {
     <div>
       <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-2 col-form-label">
-          Email
+         <p>Email</p> 
         </label>
         <div class="col-sm-10">
           <input
@@ -53,7 +53,7 @@ const Form = ({ onAuthSuccess }) => {
       </div>
       <div class="mb-3 row">
         <label for="inputPassword" class="col-sm-2 col-form-label">
-          Password
+         <p>Password</p> 
         </label>
         <div class="col-sm-10">
           <input
@@ -64,8 +64,8 @@ const Form = ({ onAuthSuccess }) => {
           ></input>
         </div>
         <div>{error}</div>
-        <ButtonForm onClick={clickButtonForm} />
       </div>
+        <ButtonForm onClick={clickButtonForm} />
     </div>
   );
 };

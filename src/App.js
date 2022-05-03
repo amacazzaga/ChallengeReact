@@ -18,16 +18,15 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   ///////////////////////////
   useEffect(() => {
-   
     getMenus(baseUrl);
   }, []); // lo primero que aparece en la web
   ////////////////////////////////////////
-  useEffect(()=>{
-    if
-    (localStorage.getItem("token"))
-     { setLoggedIn(true)}
-    
-  },[])
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setLoggedIn(true);
+    }
+  }, []);
+  ///////////////////////////////////
   const getMenus = async (url) => {
     //getMenus tiene un endpoint q depende del parametro dado
     const response = await fetch(url);
@@ -57,7 +56,7 @@ function App() {
     <div>
       <div className="container-form">
         <div>
-          {!isLoggedIn ? (//conditional rendering!
+          {!isLoggedIn ? ( //conditional rendering!
             <Form onAuthSuccess={onAuthSuccess} />
           ) : (
             <main className="container">

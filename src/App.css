@@ -83,3 +83,17 @@ p {
 .score-text {
   font-size: large;
 }
+/*FORM HERE :**/
+.container-form{
+  background-color: rgb(255, 111, 0);
+}
+
+.mb-3{
+  border: solid;
+  height: 250px;
+  width: 700px;
+ background-color: yellow;
+  display: flex;
+  align-items: center;
+}
+
