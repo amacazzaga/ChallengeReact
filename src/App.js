@@ -5,6 +5,7 @@ import "./App.css";
 import ButtonSearch from "./ButtonSearch";
 import Form from "./Form";
 import ButtonLoggedOut from "./ButtonLoggedOut";
+import ButtonMakeReady from "./ButtonMakeReady";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -125,7 +126,7 @@ function App() {
                 score={d.spoonacularScore}
                
               />
-            ))}{choosedDishes.length>0 ? (<button>preparar</button>):""}
+            ))}{choosedDishes.length>0 ? (<ButtonMakeReady/>):""}
           </div>
           <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
