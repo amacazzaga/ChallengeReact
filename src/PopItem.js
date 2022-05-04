@@ -2,7 +2,7 @@ import React from 'react'
 
 const PopItem = ({click}) => {
   return (
-    <div onClick={click}>X</div>
+    <button onClick={click}>❌</button>
   )
 }
 
