@@ -27,22 +27,19 @@ function App() {
     }
   }, []);
   ///////////////////////////////////
-  const getMenus = async (url) => {
-    //getMenus tiene un endpoint q depende del parametro dado
-    const response = await fetch(url);
-    const data = await response.json();
-    setMenu(data.menuItems);
-    SetLoading(false);
-  };
-  //////////////////////////////
   const onAuthSuccess = (token) => {
     localStorage.setItem("token", token);
     setLoggedIn(true);
   };
   ////////////////////////////////////////
-  /*use effect con el item del token
-  if() 
-  */
+  const getMenus = async (url) => {
+    //getMenus tiene un endpoint q depende del parametro dado
+    const response = await fetch(url);
+    const data = await response.json();
+    setMenu(data.menuItems); //menuItems es un arr dentro del JSON
+    // console.log(data)
+    SetLoading(false);
+  };
   /////////////////////////////////////////
   const addChoosedDish = async (id) => {
     //tomo como param id, que dp se carga de valor al hacer click en MenuItem
@@ -114,7 +111,8 @@ function App() {
             {choosedDishes.map((d) => (
               <ChoosedItem
                 click={() => {
-                  setChoosedDishes(
+                  setChoosedDishes( //el estado q tiene la info de lo q esta
+                  //en ese array; lo filtro , y queda en el estado sin ese item
                     choosedDishes.filter((dish) => {
                       return dish.id != d.id;
                     })
@@ -125,8 +123,9 @@ function App() {
                 image={d.image}
                 calories={d.nutrition.calories}
                 score={d.spoonacularScore}
+               
               />
-            ))}
+            ))}{choosedDishes.length>0 ? (<button>preparar</button>):""}
           </div>
           <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
