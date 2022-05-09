@@ -6,6 +6,7 @@ import ButtonSearch from "./ButtonSearch";
 import Form from "./Form";
 import ButtonLoggedOut from "./ButtonLoggedOut";
 import ButtonMakeReady from "./ButtonMakeReady";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -51,91 +52,102 @@ function App() {
   };
   ////////////////////////////////////////////
   return (
-    <div className="container-xl">
-      {!isLoggedIn ? ( //conditional rendering!
-        <Form onAuthSuccess={onAuthSuccess} />
-      ) : (
-        <main className="container">
-          <div className="modal-login">
-            <h1>MENU FROM HOTEL</h1>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <div className="container-xl">
+            {!isLoggedIn ? ( //conditional rendering!
+              <Form onAuthSuccess={onAuthSuccess} />
+            ) : (
+              <main className="container">
+                <div className="modal-login">
+                  <h1>MENU FROM HOTEL</h1>
 
-            <div className="container-input-button">
-              <div className="input-div">
-                <input
-                  onChange={(e) => {
-                    SetInput(e.target.value);
-                  }}
-                ></input>
-              </div>
-              <div className="button-search-div">
-                <ButtonSearch
-                  onClick={() => {
-                    const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
-                    SetLoading(true);
-                    getMenus(url);
-                  }}
-                />
-                <ButtonLoggedOut
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    setLoggedIn(false);
-                  }}
-                />
-              </div>
-            </div>
-            <div className="container-md">
-              {menu.length > 0 ? ( //se menu es mayor a cero, renderiza cada item
-                menu.map((m) => (
-                  <MenuItem
-                    click={() => {
-                      addChoosedDish(m.id); //llamo a getdish con otros params:
-                      //aca le doy el id q va a url (el id, es el id de m, en este caso)
-                      //esta cargada en menuItem pero es lo q hace button choose
-                      console.log(choosedDishes);
-                    }}
-                    key={m.id}
-                    title={m.title}
-                    image={m.image}
-                    resto={m.restaurantChain}
-                  />
-                ))
-              ) : loading ? (
-                "loading"
-              ) : (
-                <p>"no menus for : {input}, we sorry"</p>
-              )}
-            </div>
-          </div>
+                  <div className="container-input-button">
+                    <div className="input-div">
+                      <input
+                        onChange={(e) => {
+                          SetInput(e.target.value);
+                        }}
+                      ></input>
+                    </div>
+                    <div className="button-search-div">
+                      <ButtonSearch
+                        onClick={() => {
+                          const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
+                          SetLoading(true);
+                          getMenus(url);
+                        }}
+                      />
+                      <ButtonLoggedOut
+                        onClick={() => {
+                          localStorage.removeItem("token");
+                          setLoggedIn(false);
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="container-md">
+                    {menu.length > 0 ? ( //se menu es mayor a cero, renderiza cada item
+                      menu.map((m) => (
+                        <MenuItem
+                          click={() => {
+                            addChoosedDish(m.id); //llamo a getdish con otros params:
+                            //aca le doy el id q va a url (el id, es el id de m, en este caso)
+                            //esta cargada en menuItem pero es lo q hace button choose
+                            console.log(choosedDishes);
+                          }}
+                          key={m.id}
+                          title={m.title}
+                          image={m.image}
+                          resto={m.restaurantChain}
+                        />
+                      ))
+                    ) : loading ? (
+                      "loading"
+                    ) : (
+                      <p>"no menus for : {input}, we sorry"</p>
+                    )}
+                  </div>
+                </div>
 
-          <div className="container-lg">
-            <h2>Your Selection:</h2>
-            {choosedDishes.map((d) => (
-              <ChoosedItem
-                click={() => {
-                  setChoosedDishes( //el estado q tiene la info de lo q esta
-                  //en ese array; lo filtro , y queda en el estado sin ese item
-                    choosedDishes.filter((dish) => {
-                      return dish.id != d.id;
-                    })
-                  );
-                }}
-                key={d.id}
-                title={d.title}
-                image={d.image}
-                calories={d.nutrition.calories}
-                score={d.spoonacularScore}
-               
-              />
-            ))}{choosedDishes.length>0 ? (<ButtonMakeReady/>):""}
+                <div className="container-lg">
+                  <h2>Your Selection:</h2>
+                  {choosedDishes.map((d) => (
+                    <ChoosedItem
+                      click={() => {
+                        setChoosedDishes(
+                          //el estado q tiene la info de lo q esta
+                          //en ese array; lo filtro , y queda en el estado sin ese item
+                          choosedDishes.filter((dish) => {
+                            return dish.id != d.id;
+                          })
+                        );
+                      }}
+                      key={d.id}
+                      title={d.title}
+                      image={d.image}
+                      calories={d.nutrition.calories}
+                      score={d.spoonacularScore}
+                    />
+                  ))}
+                  {choosedDishes.length > 0 ? <ButtonMakeReady /> : ""}
+                </div>
+                <script
+                  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                  crossorigin="anonymous"
+                ></script>
+              </main>
+            )}
           </div>
-          <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"
-          ></script>
-        </main>
-      )}
-    </div>
+          </Route>
+          <Route path="/selection">
+            <h1>your selected this dishes : supose to map choosedDishes again</h1>
+          </Route>
+       
+      </Switch>
+    </Router>
   );
 }
 
