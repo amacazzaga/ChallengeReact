@@ -148,7 +148,27 @@ function App() {
           </div>
         </Route>
         <Route path="/selection">
-          <h1>you have selected this dishes :</h1>{" "}
+          <h1>Preparing!!! :</h1> 
+          {choosedDishes.map((d) => (
+                    <ChoosedItem
+                      click={() => {
+                        setChoosedDishes(
+                          //el estado q tiene la info de lo q esta
+                          //en ese array; lo filtro , y queda en el estado sin ese item
+                          choosedDishes.filter((dish) => {
+                            return dish.id != d.id;
+                          })
+                        );
+                      }}
+                      key={d.id}
+                      title={d.title}
+                      image={d.image}
+                      calories={d.nutrition.calories}
+                      score={d.spoonacularScore}
+                    />
+                  ))}
+             
+         
         </Route>
       </Switch>
     </Router>
