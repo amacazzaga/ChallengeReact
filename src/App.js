@@ -6,7 +6,8 @@ import ButtonSearch from "./ButtonSearch";
 import Form from "./Form";
 import ButtonLoggedOut from "./ButtonLoggedOut";
 import ButtonMakeReady from "./ButtonMakeReady";
-import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import SelectedItem from "./SelectedItem";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -132,7 +133,9 @@ function App() {
                     />
                   ))}
                   {choosedDishes.length > 0 ? (
-                    <Link to ="/selection" ><ButtonMakeReady/></Link>/*aca se agrega
+                    <Link to="/selection">
+                      <ButtonMakeReady />
+                    </Link> /*aca se agrega
                   un Link a /selection*/
                   ) : (
                     ""
@@ -148,27 +151,18 @@ function App() {
           </div>
         </Route>
         <Route path="/selection">
-          <h1>Preparing!!! :</h1> 
-          {choosedDishes.map((d) => (
-                    <ChoosedItem
-                      click={() => {
-                        setChoosedDishes(
-                          //el estado q tiene la info de lo q esta
-                          //en ese array; lo filtro , y queda en el estado sin ese item
-                          choosedDishes.filter((dish) => {
-                            return dish.id != d.id;
-                          })
-                        );
-                      }}
-                      key={d.id}
-                      title={d.title}
-                      image={d.image}
-                      calories={d.nutrition.calories}
-                      score={d.spoonacularScore}
-                    />
-                  ))}
-             
-         
+          <h1>Preparing!!! :</h1>
+          <div className="container">
+            {choosedDishes.map((d) => (
+              <SelectedItem
+                key={d.id}
+                title={d.title}
+                image={d.image}
+                calories={d.nutrition.calories}
+                score={d.spoonacularScore}
+              />
+            ))}
+          </div>
         </Route>
       </Switch>
     </Router>

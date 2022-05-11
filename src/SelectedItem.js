@@ -1,24 +1,20 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
 
-const SelectedItem = () => {
-    const {id} = useParams()
+const SelectedItem = ({ title, image, calories, score, }) => {
+ 
   return (
+    <div className="container-sm">
+      <h1>{title}</h1>
       <div>
-    {/* {choosedDishes.map((d) => (
-        <ChoosedItem
-          name={choosedDishes}
-          key={d.id}
-          title={d.title}
-          image={d.image}
-          calories={d.nutrition.calories}
-          score={d.spoonacularScore}
-        />
-      ))} */}
-      {id}
+        <img className="image-ChooseItem" src={image} />
       </div>
+      <div>
+        <p className="calories-text">Calories: {calories}</p>
+      </div>
+      <div>
+        <p className="score-text">Score : {score}</p>
+      </div>
+    </div>
+  );
+};
 
-  )
-}
-
-export default SelectedItem
+export default SelectedItem;

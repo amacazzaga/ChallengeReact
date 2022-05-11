@@ -90,6 +90,9 @@ p {
 .score-text {
   font-size: large;
 }
+.container-sm {
+  border:solid;
+}
 .container-xs {
   padding: 5px;
   margin: 25px;
