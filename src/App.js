@@ -6,7 +6,7 @@ import ButtonSearch from "./ButtonSearch";
 import Form from "./Form";
 import ButtonLoggedOut from "./ButtonLoggedOut";
 import ButtonMakeReady from "./ButtonMakeReady";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
@@ -131,7 +131,12 @@ function App() {
                       score={d.spoonacularScore}
                     />
                   ))}
-                  {choosedDishes.length > 0 ? <ButtonMakeReady /> : ""}
+                  {choosedDishes.length > 0 ? (
+                    <Link to ="/selection" ><ButtonMakeReady/></Link>/*aca se agrega
+                  un Link a /selection*/
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <script
                   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -141,11 +146,10 @@ function App() {
               </main>
             )}
           </div>
-          </Route>
-          <Route path="/selection">
-            <h1>your selected this dishes : supose to map choosedDishes again</h1>
-          </Route>
-       
+        </Route>
+        <Route path="/selection">
+          <h1>you have selected this dishes :</h1>{" "}
+        </Route>
       </Switch>
     </Router>
   );

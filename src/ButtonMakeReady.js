@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const ButtonMakeReady = () => {
   return (
-  <button>Make Ready!</button>
+  <button>make</button>
   )
-}
+};
 
-export default ButtonMakeReady
+export default ButtonMakeReady;
