@@ -2,7 +2,9 @@ import React from "react";
 
 const ButtonMakeReady = () => {
   return (
-  <button>make</button>
+    <div>
+  <button><p>Make Ready!</p></button>
+  </div>
   )
 };
 

@@ -45,6 +45,7 @@ function App() {
   };
   /////////////////////////////////////////
   const addChoosedDish = async (id) => {
+    if(choosedDishes.length>=5){return}//limita cantidad de platos
     //tomo como param id, que dp se carga de valor al hacer click en MenuItem
     const url = `https://api.spoonacular.com/food/menuItems/${id}?apiKey=${ApiKey}`;
     const response = await fetch(url);
@@ -132,13 +133,21 @@ function App() {
                       score={d.spoonacularScore}
                     />
                   ))}
+                  
                   {choosedDishes.length > 0 ? (
+                    <div>
                     <Link to="/selection">
                       <ButtonMakeReady />
-                    </Link> /*aca se agrega
-                  un Link a /selection*/
+                    </Link> 
+                    <p>puede ordenar {Math.abs(
+                    choosedDishes.length - 5
+                  )} platos mas!</p>
+                    </div>
+                    
+                    
+
                   ) : (
-                    ""
+                   ""
                   )}
                 </div>
                 <script
@@ -162,6 +171,9 @@ function App() {
                 score={d.spoonacularScore}
               />
             ))}
+          </div>
+          <div>
+            <p>Will be ready in : 15 minutes</p>
           </div>
         </Route>
       </Switch>
