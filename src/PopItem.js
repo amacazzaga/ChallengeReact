@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const PopItem = ({click}) => {
-  return (
-    <button onClick={click}>❌</button>
-  )
-}
+const PopItem = ({ click }) => {
+  return <button onClick={click}>❌</button>;
+};
 
-export default PopItem
+export default PopItem;

@@ -1,7 +1,6 @@
 import PopItem from "./PopItem";
 
 const ChoosedItem = ({ title, image, calories, score, click }) => {
- 
   return (
     <div className="container-xs">
       <h1>{title}</h1>
