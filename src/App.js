@@ -28,12 +28,12 @@ function App() {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
     }
-  }, []); 
+  }, []);
   ///////////////////////////////////
   const onAuthSuccess = (token) => {
     localStorage.setItem("token", token);
     setLoggedIn(true);
-  };// declare on app, in form does not take value from token
+  }; // declare on app, in form does not take value from token
   ////////////////////////////////////////
   const getMenus = async (url) => {
     //getMenus tiene un endpoint q depende del parametro dado
@@ -142,8 +142,8 @@ function App() {
                         <ButtonMakeReady />
                       </Link>
                       <p className="p-selection">
-                       you can order {Math.abs(choosedDishes.length - 5)}{" "}
-                        more dishes!
+                        you can order {Math.abs(choosedDishes.length - 5)} more
+                        dishes!
                       </p>
                     </div>
                   ) : (
@@ -160,8 +160,8 @@ function App() {
           </div>
         </Route>
         <Route path="/selection">
-          <h1>Preparing!!! :</h1>
-          <div className="container">
+          <h1 className="h1-preparing">Preparing!!! :</h1>
+          <div className="container-preparing">
             {choosedDishes.map((d) => (
               <SelectedItem
                 key={d.id}
@@ -172,7 +172,6 @@ function App() {
               />
             ))}
           </div>
-          <div></div>
         </Route>
       </Switch>
     </Router>

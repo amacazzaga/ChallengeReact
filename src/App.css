@@ -75,30 +75,33 @@ input {
   justify-content: space-between;
   padding: 15px;
 }
-.button-pop{
- margin-left: 15px
+.button-pop {
+  margin-left: 15px;
 }
-h1{
+h1 {
   margin: 15px;
 }
-h2{
+.h1-preparing {
+  margin-left: 25px;
+}
+h2 {
   margin: 50px;
 }
-.buttonmakeready{
-margin-left: 25px;
+.buttonmakeready {
+  margin-left: 25px;
 }
 p {
   font-weight: bold;
   font-size: larger;
 }
-.p-selection{
+.p-selection {
   margin-left: 25px;
 }
 .image-ChooseItem {
   height: 200px;
   width: 200px;
 }
-.image-ChoosedItem{
+.image-ChoosedItem {
   margin: 15px;
 }
 .calories-text {
@@ -110,7 +113,7 @@ p {
   font-size: large;
 }
 .container-sm {
-  border:solid;
+  border: solid;
 }
 .container-xs {
   padding: 5px;
@@ -118,10 +121,10 @@ p {
   background-color: beige;
   border: solid;
 }
-.container-md{
+.container-md {
   background-color: rgb(44, 182, 85);
 }
-.container-lg{
+.container-lg {
   padding: 25px;
 }
 /*FORM HERE :**/

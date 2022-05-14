@@ -2,7 +2,7 @@
 const SelectedItem = ({ title, image, calories, score, }) => {
  
   return (
-    <div className="container-sm">
+    <div className="container-xs">
       <h1>{title}</h1>
       <div>
         <img className="image-ChooseItem" src={image} />
