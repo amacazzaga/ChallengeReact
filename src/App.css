@@ -16,9 +16,9 @@
   width: 1000px;
   margin: 50px;
 }
-.modal-login {
+.menu-container {
   width: 1200px;
-  background-color: rgb(255, 115, 0);
+  background-color: rgb(44, 182, 85);
 }
 .modal-form {
   justify-content: center;

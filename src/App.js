@@ -64,7 +64,7 @@ function App() {
               <Form onAuthSuccess={onAuthSuccess} />
             ) : (
               <main className="container">
-                <div className="modal-login">
+                <div className="menu-container">
                   <h1>MENU FROM HOTEL</h1>
 
                   <div className="container-input-button">
