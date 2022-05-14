@@ -75,6 +75,9 @@ input {
   justify-content: space-between;
   padding: 15px;
 }
+.button-pop{
+ margin-left: 15px
+}
 h1{
   margin: 15px;
 }
@@ -99,9 +102,11 @@ p {
   margin: 15px;
 }
 .calories-text {
+  margin-left: 15px;
   font-size: large;
 }
 .score-text {
+  margin-left: 15px;
   font-size: large;
 }
 .container-sm {

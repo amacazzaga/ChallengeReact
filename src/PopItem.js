@@ -1,7 +1,7 @@
 import React from "react";
 
 const PopItem = ({ click }) => {
-  return <button onClick={click}>❌</button>;
+  return <button className="button-pop" onClick={click}>❌</button>;
 };
 
 export default PopItem;
