@@ -18,7 +18,8 @@ const Form = ({ onAuthSuccess }) => {
       .then(function (response) {
         if (response.status == 200) {
           console.log(response);
-          onAuthSuccess(response.data.token);
+          onAuthSuccess(response.data.token);//when click button, call the func,if
+          //code goes this way
           setError("");
         }
       })

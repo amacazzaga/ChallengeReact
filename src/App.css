@@ -75,6 +75,9 @@ input {
   justify-content: space-between;
   padding: 15px;
 }
+h2{
+  margin: 50px;
+}
 p {
   font-weight: bold;
   font-size: larger;
@@ -99,6 +102,9 @@ p {
   background-color: beige;
   border: solid;
 }
+.container-md{
+  background-color: rgb(44, 182, 85);
+}
 .container-lg{
   padding: 25px;
 }
@@ -116,6 +122,7 @@ p {
   align-items: center;
 }
 .button-form {
+  margin: 5px;
   font-size: larger;
   font-weight: bolder;
   border: solid;

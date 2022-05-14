@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import MenuItem from "./MenuItem";
 import ChoosedItem from "./ChoosedItem";
-import "./App.css";
 import ButtonSearch from "./ButtonSearch";
 import Form from "./Form";
 import ButtonLoggedOut from "./ButtonLoggedOut";
 import ButtonMakeReady from "./ButtonMakeReady";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SelectedItem from "./SelectedItem";
+import "./App.css";
 
 function App() {
   const ApiKey = "0cdc104e20294b5e9931a1c0eaa2f126";
-  const numberUrl = "number=10";
+  const numberUrl = "number=5";
   const baseUrl = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=pizza&${numberUrl}`;
 
   const [menu, setMenu] = useState([]);
@@ -28,12 +28,12 @@ function App() {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
     }
-  }, []);
+  }, []); 
   ///////////////////////////////////
   const onAuthSuccess = (token) => {
     localStorage.setItem("token", token);
     setLoggedIn(true);
-  };
+  };// declare on app, in form does not take value from token
   ////////////////////////////////////////
   const getMenus = async (url) => {
     //getMenus tiene un endpoint q depende del parametro dado
@@ -59,7 +59,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <div className="container-xl">
+          <div className="container-md">
             {!isLoggedIn ? ( //conditional rendering!
               <Form onAuthSuccess={onAuthSuccess} />
             ) : (
