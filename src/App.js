@@ -141,9 +141,9 @@ function App() {
                       <Link to="/selection">
                         <ButtonMakeReady />
                       </Link>
-                      <p>
-                        puede ordenar {Math.abs(choosedDishes.length - 5)}{" "}
-                        platos mas!
+                      <p className="p-selection">
+                       you can order {Math.abs(choosedDishes.length - 5)}{" "}
+                        more dishes!
                       </p>
                     </div>
                   ) : (

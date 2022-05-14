@@ -5,7 +5,7 @@ const ChoosedItem = ({ title, image, calories, score, click }) => {
     <div className="container-xs">
       <h1>{title}</h1>
       <PopItem click={click} />
-      <div>
+      <div className="image-ChoosedItem">
         <img className="image-ChooseItem" src={image} />
       </div>
       <div>

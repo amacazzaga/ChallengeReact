@@ -75,17 +75,28 @@ input {
   justify-content: space-between;
   padding: 15px;
 }
+h1{
+  margin: 15px;
+}
 h2{
   margin: 50px;
+}
+.buttonmakeready{
+margin-left: 25px;
 }
 p {
   font-weight: bold;
   font-size: larger;
 }
-
+.p-selection{
+  margin-left: 25px;
+}
 .image-ChooseItem {
   height: 200px;
   width: 200px;
+}
+.image-ChoosedItem{
+  margin: 15px;
 }
 .calories-text {
   font-size: large;
