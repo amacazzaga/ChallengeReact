@@ -6,13 +6,10 @@ const ChoosedItem = ({ title, image, calories, score, click }) => {
       <h1>{title}</h1>
       <PopItem click={click} />
       <div className="image-ChoosedItem">
-        <img className="image-ChooseItem" src={image} />
+        <img className="img-fluid" alt="Responsive image" src={image} />
       </div>
       <div>
         <p className="calories-text">Calories: {calories}</p>
-      </div>
-      <div>
-        <p className="score-text">Score : {score}</p>
       </div>
     </div>
   );

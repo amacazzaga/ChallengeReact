@@ -7,7 +7,7 @@ const MenuItem = ({ title, resto, image, click }) => {
     <div className="item">
       <ButtonChoose click={click} /*aca esta pasado como prop*/ />
       <h1>{title}</h1>
-      <img src={image} alt="" />
+      <img className="img-fluid" alt="Responsive image" src={image} />
       <p>{resto}</p>
     </div>
   );

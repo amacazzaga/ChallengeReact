@@ -132,7 +132,6 @@ function App() {
                       title={d.title}
                       image={d.image}
                       calories={d.nutrition.calories}
-                      score={d.spoonacularScore}
                     />
                   ))}
 
@@ -168,7 +167,6 @@ function App() {
                 title={d.title}
                 image={d.image}
                 calories={d.nutrition.calories}
-                score={d.spoonacularScore}
               />
             ))}
           </div>

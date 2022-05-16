@@ -1,19 +1,20 @@
 
-const SelectedItem = ({ title, image, calories, score, }) => {
+const SelectedItem = ({ title, image, calories, }) => {
  
   return (
-    <div className="container-xs">
-      <h1>{title}</h1>
+    
+    <div className="container-xs-selection">
       <div>
-        <img className="image-ChooseItem" src={image} />
+      <h1>{title}</h1>
+      </div>
+      <div>
+        <img className="img-fluid" alt="Responsive image" src={image} />
       </div>
       <div>
         <p className="calories-text">Calories: {calories}</p>
       </div>
-      <div>
-        <p className="score-text">Score : {score}</p>
-      </div>
     </div>
+   
   );
 };
 
