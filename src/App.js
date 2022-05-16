@@ -22,7 +22,7 @@ function App() {
   ///////////////////////////
   useEffect(() => {
     getMenus(baseUrl);
-  }, []); // lo primero que aparece en la web
+  }, []); // first, in homepage
   ////////////////////////////////////////
   useEffect(() => {
     if (localStorage.getItem("token")) {

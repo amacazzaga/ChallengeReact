@@ -45,7 +45,7 @@ const Form = ({ onAuthSuccess }) => {
           <p>Welcome to the Hotel!</p>
         </h2>
       </div>
-      <p>Please, Logg in to get a menu :</p>
+      <p>Please, Log in to get a menu :</p>
       <div class="mb-3 row">
         <label for="staticEmail" class="col-sm-2 col-form-label">
           <p>Email</p>
