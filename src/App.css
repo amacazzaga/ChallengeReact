@@ -1,14 +1,17 @@
 .container {
-  margin: 15px;
+  border: solid;
   display: flex;
   background-color: rgb(232, 244, 244);
-  border: solid;
+  
 }
 .container-form {
   border: solid;
   display: flex;
   padding: 50px;
   justify-content: center;
+}
+.col{
+  padding:15px
 }
 .container-left {
   display: flex;
@@ -48,13 +51,10 @@
   flex-wrap: wrap;
 }
 
-.item {
+.container-item {
   flex-direction: row;
   border: solid;
   background-color: rgb(232, 244, 244);
-  height: 400px;
-  width: 400px;
-  margin: 15px;
 }
 input {
   height: 30px;
@@ -98,13 +98,6 @@ p {
 .p-selection {
   margin-left: 25px;
 }
-.image-ChooseItem {
-  height: 200px;
-  width: 200px;
-}
-.image-ChoosedItem {
-  margin: 15px;
-}
 
 .calories-text {
   margin-left: 15px;
@@ -125,14 +118,11 @@ p {
 }
 .container-xs-selection {
   margin: 10px;
- 
   display: flex;
   flex-direction: column;
   background-color: rgb(232, 244, 244);
   border: solid;
 }
-
-
 
 .container-md {
   background-color: rgb(44, 182, 85);

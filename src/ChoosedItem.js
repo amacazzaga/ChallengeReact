@@ -1,8 +1,8 @@
 import PopItem from "./PopItem";
 
-const ChoosedItem = ({ title, image, calories, score, click }) => {
+const ChoosedItem = ({ title, image, calories,  click }) => {
   return (
-    <div className="container-xs">
+    <div className="container-md">
       <h1>{title}</h1>
       <PopItem click={click} />
       <div className="image-ChoosedItem">

@@ -59,104 +59,107 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <div className="container-md">
-            {!isLoggedIn ? ( //conditional rendering!
-              <Form onAuthSuccess={onAuthSuccess} />
-            ) : (
-              <main className="container">
-                <div className="menu-container">
-                  <h1>MENU FROM HOTEL</h1>
+          {!isLoggedIn ? ( //conditional rendering!
+            <Form onAuthSuccess={onAuthSuccess} />
+          ) : (
+            <div className="container">
+              <div className="row">
+               
+                  <div className="col">
+                    <h1>MENU FROM HOTEL</h1>
 
-                  <div className="container-input-button">
-                    <div className="input-div">
-                      <input
-                        onChange={(e) => {
-                          SetInput(e.target.value);
-                        }}
-                      ></input>
+                    <div className="container-input-button">
+                      <div className="input-div">
+                        <input
+                          onChange={(e) => {
+                            SetInput(e.target.value);
+                          }}
+                        ></input>
+                      </div>
+                      <div className="button-search-div">
+                        <ButtonSearch
+                          onClick={() => {
+                            const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
+                            SetLoading(true);
+                            getMenus(url);
+                          }}
+                        />
+                        <ButtonLoggedOut
+                          onClick={() => {
+                            localStorage.removeItem("token");
+                            setLoggedIn(false);
+                          }}
+                        />
+                      </div>
                     </div>
-                    <div className="button-search-div">
-                      <ButtonSearch
-                        onClick={() => {
-                          const url = `https://api.spoonacular.com/food/menuItems/search?apiKey=${ApiKey}&query=${input}&${numberUrl}`;
-                          SetLoading(true);
-                          getMenus(url);
-                        }}
-                      />
-                      <ButtonLoggedOut
-                        onClick={() => {
-                          localStorage.removeItem("token");
-                          setLoggedIn(false);
-                        }}
-                      />
+                    <div className="container-md">
+                      {menu.length > 0 ? ( //se menu es mayor a cero, renderiza cada item
+                        menu.map((m) => (
+                          <MenuItem
+                            click={() => {
+                              addChoosedDish(m.id); //llamo a getdish con otros params:
+                              //aca le doy el id q va a url (el id, es el id de m, en este caso)
+                              //esta cargada en menuItem pero es lo q hace button choose
+                              console.log(choosedDishes);
+                            }}
+                            key={m.id}
+                            title={m.title}
+                            image={m.image}
+                            resto={m.restaurantChain}
+                          />
+                        ))
+                      ) : loading ? (
+                        "loading"
+                      ) : (
+                        <p>"no menus for : {input}, we sorry"</p>
+                      )}
                     </div>
                   </div>
-                  <div className="container-md">
-                    {menu.length > 0 ? ( //se menu es mayor a cero, renderiza cada item
-                      menu.map((m) => (
-                        <MenuItem
-                          click={() => {
-                            addChoosedDish(m.id); //llamo a getdish con otros params:
-                            //aca le doy el id q va a url (el id, es el id de m, en este caso)
-                            //esta cargada en menuItem pero es lo q hace button choose
-                            console.log(choosedDishes);
-                          }}
-                          key={m.id}
-                          title={m.title}
-                          image={m.image}
-                          resto={m.restaurantChain}
-                        />
-                      ))
-                    ) : loading ? (
-                      "loading"
+
+                  <div className="col">
+                    <h2>Your Selection:</h2>
+                    {choosedDishes.map((d) => (
+                      <ChoosedItem
+                        click={() => {
+                          setChoosedDishes(
+                            //el estado q tiene la info de lo q esta
+                            //en ese array; lo filtro , y queda en el estado sin ese item
+                            choosedDishes.filter((dish) => {
+                              return dish.id != d.id;
+                            })
+                          );
+                        }}
+                        key={d.id}
+                        title={d.title}
+                        image={d.image}
+                        calories={d.nutrition.calories}
+                      />
+                    ))}
+
+                    {choosedDishes.length > 0 ? (
+                      <div>
+                        <Link to="/selection">
+                          <ButtonMakeReady />
+                        </Link>
+                        <p className="p-selection">
+                          you can order {Math.abs(choosedDishes.length - 5)}{" "}
+                          more dishes!
+                        </p>
+                      </div>
                     ) : (
-                      <p>"no menus for : {input}, we sorry"</p>
+                      ""
                     )}
                   </div>
-                </div>
 
-                <div className="container-lg">
-                  <h2>Your Selection:</h2>
-                  {choosedDishes.map((d) => (
-                    <ChoosedItem
-                      click={() => {
-                        setChoosedDishes(
-                          //el estado q tiene la info de lo q esta
-                          //en ese array; lo filtro , y queda en el estado sin ese item
-                          choosedDishes.filter((dish) => {
-                            return dish.id != d.id;
-                          })
-                        );
-                      }}
-                      key={d.id}
-                      title={d.title}
-                      image={d.image}
-                      calories={d.nutrition.calories}
-                    />
-                  ))}
-
-                  {choosedDishes.length > 0 ? (
-                    <div>
-                      <Link to="/selection">
-                        <ButtonMakeReady />
-                      </Link>
-                      <p className="p-selection">
-                        you can order {Math.abs(choosedDishes.length - 5)} more
-                        dishes!
-                      </p>
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <script
-                  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                  crossorigin="anonymous"
-                ></script>
-              </main>
-            )}
-          </div>
+                  <script
+                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                    crossorigin="anonymous"
+                  ></script>
+               
+              </div>
+            </div>
+          )}
         </Route>
         <Route path="/selection">
           <h1 className="h1-preparing">Preparing!!! :</h1>
