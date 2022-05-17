@@ -1,6 +1,6 @@
 .container {
   border: solid;
-  display: flex;
+
   background-color: rgb(232, 244, 244);
   
 }
@@ -11,7 +11,7 @@
   justify-content: center;
 }
 .col{
-  padding:15px
+  padding: 25px;
 }
 .container-left {
   display: flex;
