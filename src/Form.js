@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import ButtonForm from "./ButtonForm";
 import { useState } from "react";
 import axios from "axios";
@@ -78,4 +78,4 @@ const Form = ({ onAuthSuccess }) => {
   );
 };
 
-export default Form;
+export default Form;*/
