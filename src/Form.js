@@ -1,4 +1,4 @@
-/*import React from "react";
+import React from "react";
 import ButtonForm from "./ButtonForm";
 import { useState } from "react";
 import axios from "axios";
@@ -18,7 +18,7 @@ const Form = ({ onAuthSuccess }) => {
       .then(function (response) {
         if (response.status == 200) {
           console.log(response);
-          onAuthSuccess(response.data.token);//when click button, call the func,if
+          onAuthSuccess(response.data.token); //when click button, call the func,if
           //code goes this way
           setError("");
         }
@@ -78,4 +78,4 @@ const Form = ({ onAuthSuccess }) => {
   );
 };
 
-export default Form;*/
+export default Form;
